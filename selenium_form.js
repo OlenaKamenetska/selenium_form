@@ -1,4 +1,4 @@
-it('selenium_form', () => {
+it('Correct_data', () => {
     cy.visit('https://the-internet.herokuapp.com/login');
 
     cy.get('[type="text"]').type('tomsmith');
@@ -8,18 +8,19 @@ it('selenium_form', () => {
     cy.get('.flash.success').contains('You logged into a secure area').should('exist')       
 })
 
-it('selenium_form', () => {
-cy.get('.icon-2x.icon-signout').click();
-cy.get('.flash.success').contains('You logged out of the secure area!').should('exist')    
-
-cy.get('[type="text"]').type('Olena');
-cy.get('[type="password"]').type('Kamen');    
-})
-
-
-it('selenium_form', () => {
+    it('incorrect_data', () => {
+        cy.get('.icon-2x.icon-signout').click();
+        cy.get('.flash.success').contains('You logged out of the secure area!').should('exist')    
+        
+        cy.get('[type="text"]').type('Olena');
+        cy.get('[type="password"]').type('Kamen');    
+        })
+        
+it('logout', () => {
     cy.visit('https://the-internet.herokuapp.com/login');
     
     cy.get ('.fa').click();
     cy.get('.flash.error').contains('Your username is invalid').should('exist');
     })
+
+
